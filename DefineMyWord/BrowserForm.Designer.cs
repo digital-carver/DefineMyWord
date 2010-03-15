@@ -49,6 +49,7 @@
             this.definitionBrowser.Name = "definitionBrowser";
             this.definitionBrowser.Size = new System.Drawing.Size(784, 514);
             this.definitionBrowser.TabIndex = 0;
+            this.definitionBrowser.Navigating += new System.Windows.Forms.WebBrowserNavigatingEventHandler(this.definitionBrowser_Navigating);
             // 
             // goButton
             // 
@@ -76,7 +77,7 @@
             this.systrayNotifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("systrayNotifyIcon.Icon")));
             this.systrayNotifyIcon.Text = "DefineMyWord";
             this.systrayNotifyIcon.Visible = true;
-            this.systrayNotifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DefineMyWord_MouseDoubleClick);
+            this.systrayNotifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.sysTrayNotifyIcon_MouseDoubleClick);
             // 
             // sysTrayMenuStrip
             // 

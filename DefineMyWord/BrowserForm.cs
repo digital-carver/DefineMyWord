@@ -86,20 +86,20 @@ namespace DefineMyWord
             goButton.Left = addressBar.Width + 5;
         }
 
-        public void DefineMyWord_MouseDoubleClick(object sender, MouseEventArgs e)
+        public void sysTrayNotifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             restoreMe();
         }
 
         public void BrowserForm_Load(object sender, EventArgs e)
         {
+            //Start the application minimized
             minimizeMe();
         }
 
         public void BrowserForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (e.CloseReason != CloseReason.TaskManagerClosing && e.CloseReason != CloseReason.WindowsShutDown
-                && e.CloseReason != CloseReason.ApplicationExitCall)
+            if (e.CloseReason != CloseReason.TaskManagerClosing && e.CloseReason != CloseReason.WindowsShutDown)
             {
                 e.Cancel = true;
                 minimizeMe();
@@ -145,7 +145,7 @@ namespace DefineMyWord
 
         private void BrowserForm_KeyDown(object sender, KeyEventArgs e)
         {
-            addressBar.Text = e.KeyData.ToString();
+            addressBar.Text = e.KeyData.ToString(); //DEBUG - this function somehow isn't working
             if (e.KeyCode == Keys.Escape)
             {
                 minimizeMe();
@@ -169,5 +169,12 @@ namespace DefineMyWord
                 adjustControls();
             }
         }
+
+        private void definitionBrowser_Navigating(object sender, WebBrowserNavigatingEventArgs e)
+        {
+            // Change the addressbar text even if we're navigating through user-clicks on the page
+            addressBar.Text = e.Url.ToString();
+        }
+
     }
 }
