@@ -143,20 +143,6 @@ namespace DefineMyWord
             }
         }
 
-        private void BrowserForm_KeyDown(object sender, KeyEventArgs e)
-        {
-            addressBar.Text = e.KeyData.ToString(); //DEBUG - this function somehow isn't working
-            if (e.KeyCode == Keys.Escape)
-            {
-                minimizeMe();
-                e.Handled = true;
-            }
-            else if (e.KeyCode == Keys.D && e.Alt)
-            {
-                addressBar.Focus();
-                e.Handled = true;
-            }
-        }
 
         private void BrowserForm_Resize(object sender, EventArgs e)
         {
@@ -176,5 +162,18 @@ namespace DefineMyWord
             addressBar.Text = e.Url.ToString();
         }
 
+        private void BrowserForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                minimizeMe();
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.D && e.Alt)
+            {
+                addressBar.Focus();
+                e.Handled = true;
+            }
+        }
     }
 }

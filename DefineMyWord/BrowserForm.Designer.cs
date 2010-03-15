@@ -123,11 +123,13 @@
             this.Controls.Add(this.addressBar);
             this.Controls.Add(this.goButton);
             this.Controls.Add(this.definitionBrowser);
+            this.KeyPreview = true;
             this.Name = "BrowserForm";
             this.ShowInTaskbar = false;
             this.Text = "DefineMyWord";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.BrowserForm_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BrowserForm_FormClosing);
             this.Resize += new System.EventHandler(this.BrowserForm_Resize);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BrowserForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.goButton)).EndInit();
